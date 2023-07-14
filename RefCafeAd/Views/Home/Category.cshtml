@@ -1,0 +1,32 @@
+﻿@model Category
+@using X.PagedList.Mvc;
+@using X.PagedList;
+@{
+    ViewData["Title"] = Model.Name;
+    var page = (int?)ViewBag.Page ?? 1;
+    var pageSize = 12;
+    var products = Model.Products.Where(p => p.Enabled).ToPagedList(page, pageSize);
+}
+<div class="container">
+    <h2>@Model.Rayon.Name / @Model.Name</h2>
+    <hr />
+    <partial name="_ProductListPartial" model="products" />
+    <nav class="d-flex justify-content-center py-2">
+        <ul class="pagination">
+            <li class="page-item @(products.HasPreviousPage ? "":"disabled")">
+                <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" , asp-route-page="@(products.HasPreviousPage ? page-1 : page)">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int i = 1; i <= products.PageCount; i++)
+            {
+                <li class="page-item @(i == page ? "active":"")"><a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" , asp-route-page="@i">@(i)</a></li>
+            }
+            <li class="page-item @(products.HasNextPage ? "":"disabled")">
+                <a class="page-link" asp-route="category" asp-route-id="@Model.Id" asp-route-name="@Model.Name.ToSafeUrlString()" , asp-route-page="@(products.HasNextPage ? page+1 : page)">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

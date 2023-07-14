@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Türkiye'nin İlk PC Kiralama Sitesi'">
+    <meta name="keywords" content="Kiralama PC MVC C#">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RefCafe - Türkiye'nin İlk PC Kiralama Sitesi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="inner-header">
+                <div class="logo">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/images/ref4.jpeg" alt=""></a>
+                </div>
+                <div class="user-access">
+                    @await Component.InvokeAsync("UserBar")
+                </div>
+                <nav class="main-menu mobile-menu">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                        <li><a asp-controller="Home" asp-action="AboutUs">Hakkımızda</a></li>
+                        <li><a asp-controller="Home" asp-action="ContactUs">İletişim</a></li>
+                        @await Component.InvokeAsync("RayonBar")
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container-fluid mb-5 p-0">
+        @RenderBody()
+    </div>
+
+    <footer class="footer-section spad">
+        <div class="container">          
+            <div class="footer-widget">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>İletişim</h4>
+                            <ul>
+                                <li>Barbaros Bulvarı, No:59/A</li>
+                                <li>34353 Beşiktaş / İstanbul</li>
+                                <li>0 539 435 42 78</li>
+                                <li>info@refcafe.net</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Çalışma Saatleri</h4>
+                            <ul>
+                                <li>Pazartesi : 10:00 - 22:00</li>
+                                <li>Salı : 10:00 - 22:00</li>
+                                <li>Çarşamba : 10:00 - 22:00</li>
+                                <li>Perşembe : 10:00 - 22:00</li>
+                                <li>Cuma : 10:00 - 22:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Sponsorumuz</h4>
+                            <a href="https://esaesports.com/">
+                                <img src="~/images/Espor.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h4>Harita</h4>
+                              <iframe src="https://www.google.com/maps/d/embed?mid=1kX3cFjaM1zOG4OYLK7wZJt5ip5CbQFA&ehbc=2E312F" width="350" height="235"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-links-warp">
+            <div class="container">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/gokaaybozkurt/" class="instagram"><i class="fa-brands fa-instagram"></i><span>instagram</span></a>
+                </div>
+            </div>
+
+            <div class="container text-center pt-5">
+                <p>
+                    Copyright &copy;
+                    @DateTime.Today.Year Tüm hakları saklıdır
+                </p>
+            </div>
+
+
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/jquery.slicknav.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/mixitup.min.js"></script>
+    <script src="~/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(() => {
+            $('body').on('mousedown', (e) => {
+                //$('.category-panel').removeClass('show').css('z-index', '-1');
+            });
+            $('a.rayon-btn').on('click', (e) => {
+
+                $('.category-panel').removeClass('show').addClass('d-none').css('z-index', '-1');
+                const id = $(e.currentTarget).attr('data-category-id');
+                $('div#categoryPanel_' + id).addClass('show').removeClass('d-none').css('z-index', '1');
+            });
+        });
+        @if (TempData["addedToCart"] is not null)
+        {
+            <text>
+            Swal.fire({
+            title: 'Teşekkürler',
+            html: 'Ürün sepetinize eklendi...<a href="/Account/ShoppingCart">Sepete Git</a>',
+            icon: 'success',
+            toast: true,
+            confirmButtonText: 'Alışverişe Devam Et',
+            position: 'top-end'
+            });
+          </text>
+        }
+
+
+    </script>
+</body>
+</html>

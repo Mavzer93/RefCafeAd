@@ -1,0 +1,46 @@
+﻿@model ContactUsViewModel
+@{
+    ViewData["Title"] = "Bize Ulaşın";
+}
+<h1>@ViewData["Title"]</h1>
+@if (TempData["messageSent"] != null)
+{
+    <div class="alert alert-success">
+        <h2>Teşekkürler</h2>
+        <p>Mesajınız iletilmiştir.</p>
+    </div>
+}
+<form method="post">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="form-group">
+                <label class="form-label" asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Email"></label>
+                <input class="form-control" asp-for="Email" />
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="PhoneNumber"></label>
+                <input class="form-control" asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Message"></label>
+                <textarea class="form-control" asp-for="Message"></textarea>
+                <span asp-validation-for="Message"></span>
+            </div>
+            <hr />
+            <button type="submit" class=" btn btn-primary">
+                <i class="fa fa-send"></i> Gönder
+            </button>
+        </div>
+    </div>
+</form>
+
+@section scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
